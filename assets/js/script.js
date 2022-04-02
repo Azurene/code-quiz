@@ -1,4 +1,5 @@
 var timerEl = document.getElementById('countdown');
+var quizEl = document.getElementById('quiz');
 
 var countdownTimer = function() {
     var timeLeft = 5;
@@ -9,10 +10,11 @@ var countdownTimer = function() {
            timeLeft--;
        }
        else {
-           timerEl.textConent = "";
+           timerEl.textContent = "Time's Up!";
            clearInterval(timeInterval);
        }
     }, 1000);
 };
+
 
 countdownTimer();
