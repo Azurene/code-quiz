@@ -1,7 +1,18 @@
-var timer = document.getElementById("countdown");
+var timerEl = document.getElementById('countdown');
 
-var timeDown = function() {
-    
-}
+var countdownTimer = function() {
+    var timeLeft = 5;
 
-document.getElementById("countdown").addEventListener("click", timeDown)
+    var timeInterval = setInterval(function() {
+       if (timeLeft >= 0) {
+           timerEl.textContent = timeLeft;
+           timeLeft--;
+       }
+       else {
+           timerEl.textConent = "";
+           clearInterval(timeInterval);
+       }
+    }, 1000);
+};
+
+countdownTimer();
