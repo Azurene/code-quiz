@@ -36,7 +36,6 @@ var questions = [
 var startQuiz = function() {
     countdownTimer();
     quizQuestions();
-    console.log("start!");
 };
 
 // function for the timer
@@ -59,16 +58,42 @@ var quizQuestions = function() {
     quizAnswers.innerHTML = "";
     // hide start button
     startButtonEl.style.visibility = "hidden";
+    var questionIndex = 0;
     // For loop through array
     for (var i = 0; i < questions.length; i++) {
-        var questionIndex = 0
         var quizQuestion = questions[questionIndex].question;
         var quizChoices = questions[questionIndex].choices;
-        questionEl.innerHTML = quizQuestion;
-        for (var i = 0; i < quizChoices.length; i++) {
-            console.log(quizChoices[0]);
+        questionEl.textContent = quizQuestion;
+        console.log(quizQuestion);
+    }
+    quizChoices.forEach(function(newOption) {
+        var answerList = document.createElement("li");
+        answerList.textContent = newOption;
+        quizAnswers.appendChild(answerList);
+        answerList.addEventListener("click", (selectAnswer));
+    });
+}
+
+var selectAnswer = function(event) {
+    var element = event.target;
+    var feedbackElement = document.createElement("li");
+    var questionIndex = 0; 
+    if (element.matches("li")) {
+        if (element.textContent === questions[questionIndex].answer) {
+            // correct answer
+            // score++;
+            feedbackElement.textContent = "Correct!";
+            quizAnswers.appendChild(feedbackElement);
+        } else {
+            
         }
     }
+    questionIndex++
+
+    if (questionIndex >= questions.length) {
+        console.log("done");
+    } else (questionIndex);
+
 }
 
 startButtonEl.addEventListener('click', startQuiz)
