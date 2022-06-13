@@ -93,7 +93,7 @@ var selectAnswer = function(event) {
     if (questionIndex >= questions.length) {
         console.log("done");
     } else (questionIndex);
-
+    
 }
 
 startButtonEl.addEventListener('click', startQuiz)
